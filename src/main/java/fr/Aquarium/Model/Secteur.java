@@ -1,9 +1,7 @@
 package fr.Aquarium.Model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-/*
+import javax.persistence.*;
+
 @Entity
 @Table(name="SECTEUR")
 public class Secteur {
@@ -15,5 +13,37 @@ public class Secteur {
     private String name;
     @Column(name="SECTEUR_LOCALISATION")
     private int localisation;
+
+    public Secteur() {
+        super();
+    }
+
+    public Secteur(String name , int localisation) {
+        this.name = name;
+        this.localisation = localisation;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getLocalisation() {
+        return localisation;
+    }
+
+    public void setLocalisation(int localisation) {
+        this.localisation = localisation;
+    }
 }
-*/
