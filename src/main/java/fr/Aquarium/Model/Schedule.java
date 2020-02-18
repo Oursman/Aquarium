@@ -31,4 +31,52 @@ public class Schedule {
         this.startActivity= startActivity;
         this.endActivity= endActivity;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Bassin getBassin() {
+        return bassin;
+    }
+
+    public void setBassin(Bassin bassin) {
+        this.bassin = bassin;
+    }
+
+    public String getActivity() {
+        return activity;
+    }
+
+    public void setActivity(String activity) {
+        this.activity = activity;
+    }
+
+    public Date getStartActivity() {
+        return startActivity;
+    }
+
+    public void setStartActivity(Date startActivity) {
+        this.startActivity = startActivity;
+    }
+
+    public Date getEndActivity() {
+        return endActivity;
+    }
+
+    public void setEndActivity(Date endActivity) {
+        this.endActivity = endActivity;
+    }
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
 }
