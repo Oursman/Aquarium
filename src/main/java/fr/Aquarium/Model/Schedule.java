@@ -10,14 +10,20 @@ public class Schedule {
     @GeneratedValue
     @Column(name="SCHEDULE_ID")
     private int id;
-    @Column(name="SCHEDULE_ID")
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BASSIN_ID", nullable = false)
     private Bassin bassin;
+
     @Column(name="SCHEDULE_ACTIVITY")
     private String activity;
+
     @Column(name="SCHEDULE_STATACTIVITY")
     private Date startActivity;
+
     @Column(name="SCHEDULE_ENDACTIVITY")
     private Date endActivity;
+
     @Column(name="SCHEDULE_OPEN")
     private boolean open;
 

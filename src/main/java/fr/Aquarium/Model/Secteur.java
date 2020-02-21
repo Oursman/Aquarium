@@ -9,8 +9,10 @@ public class Secteur {
     @GeneratedValue
     @Column(name="SECTEUR_ID")
     private int id;
+
     @Column(name="SECTEUR_NAME")
     private String name;
+
     @Column(name="SECTEUR_LOCALISATION")
     private int localisation;
 
