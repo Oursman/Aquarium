@@ -9,10 +9,9 @@ import java.util.Date;
 @Table(name="ANIMAL")
 public class Animal {
     @Id
-    @GeneratedValue
-    @Column(name="ANIMAL_ID", nullable = false)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-    
+
     @Column(name="ANIMAL_NOM", nullable = false)
     private String nom;
 
@@ -27,6 +26,10 @@ public class Animal {
 
     @Column(name="ANIMAL_ENDDATE", nullable = false)
     private Date endDate;
+
+    @ManyToOne(targetEntity = Bassin.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "BASSIN_ID", referencedColumnName = "BASSIN_ID")
+    private Bassin bassin;
 
     public Animal() {
         super();
@@ -86,5 +89,13 @@ public class Animal {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Bassin getBassin() {
+        return bassin;
+    }
+
+    public void setBassin(Bassin bassin) {
+        this.bassin = bassin;
     }
 }

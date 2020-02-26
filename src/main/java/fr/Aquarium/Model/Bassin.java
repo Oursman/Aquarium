@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Bassin {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="BASSIN_ID")
     private int id;
 
@@ -21,8 +21,8 @@ public class Bassin {
     @Column(name="BASSIN_SALE")
     private Boolean sale;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SECTER_ID", nullable = false)
+    @ManyToOne(targetEntity = Secteur.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "SECTEUR_ID", referencedColumnName = "SECTEUR_ID")
     private Secteur secteur;
 
     public Bassin() {
