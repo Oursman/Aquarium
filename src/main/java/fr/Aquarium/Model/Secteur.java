@@ -1,14 +1,15 @@
 package fr.Aquarium.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="SECTEUR")
-public class Secteur {
+public class Secteur implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="SECTEUR_ID")
-    private int id;
+    private Long id;
 
     @Column(name="SECTEUR_NAME")
     private String name;
@@ -25,11 +26,11 @@ public class Secteur {
         this.localisation = localisation;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

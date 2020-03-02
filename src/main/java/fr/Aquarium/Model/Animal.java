@@ -2,15 +2,19 @@ package fr.Aquarium.Model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 @Entity
 @Table(name="ANIMAL")
-public class Animal {
+public class Animal implements Serializable {
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(name="ANIMAL_NOM", nullable = false)
     private String nom;
@@ -24,30 +28,38 @@ public class Animal {
     @Column(name="ANIMAL_STARTDATE", nullable = false)
     private Date startDate;
 
-    @Column(name="ANIMAL_ENDDATE", nullable = false)
+    @Column(name="ANIMAL_ENDDATE")
     private Date endDate;
 
-    @ManyToOne(targetEntity = Bassin.class, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(targetEntity = Bassin.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "BASSIN_ID", referencedColumnName = "BASSIN_ID")
     private Bassin bassin;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(targetEntity = Espece.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ESPECE_ID", referencedColumnName = "ESPECE_ID")
+    private Espece espece;
 
     public Animal() {
         super();
     }
 
-    public Animal(String nom, String sexe, String signeDistinctif, Date startDate, Date endDate) {
+    public Animal(String nom, String sexe, String signeDistinctif, Date startDate, Date endDate, Bassin bassin, Espece espece) {
         this.nom=nom;
         this.sexe = sexe;
         this.signeDistinctif=signeDistinctif;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.bassin = bassin;
+        this.espece = espece;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -97,5 +109,13 @@ public class Animal {
 
     public void setBassin(Bassin bassin) {
         this.bassin = bassin;
+    }
+
+    public Espece getEspece() {
+        return espece;
+    }
+
+    public void setEspece(Espece espece) {
+        this.espece = espece;
     }
 }

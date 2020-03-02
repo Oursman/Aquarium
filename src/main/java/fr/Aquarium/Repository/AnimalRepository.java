@@ -13,6 +13,10 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     List<Animal> findByNom(@Param("name") String name);
 
+
    @Query("SELECT a FROM Animal a join a.bassin b where b.id = :idBassin ")
     List<Animal> findAnimalByBassinid(@Param("idBassin") Long idBassin);
+
+    @Query("SELECT a FROM Animal a join a.espece e where e.name = :name ")
+    List<Animal> findAnimalByEspeceName(@Param("name") String name);
 }

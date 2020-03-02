@@ -1,0 +1,49 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-responsive-md table-striped text-center btn-table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Sexe</th>
+        <th scope="col">Espece</th>
+        <th scope="col">Signe Distinctif</th>
+        <th scope="col">Entre</th>
+        <th scope="col">Sortie</th>
+        <th scope="col">Basssin</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Modify</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let animal of animal">
+        <td>{{ animal.id }}</td>
+        <td>{{ animal.nom }}</td>
+        <td>{{ animal.sexe }}</td>
+        <td>{{ animal.espece.name }}</td>
+        <td>{{ animal.signeDistinctif }}</td>
+        <td>{{ animal.startDate }}</td>
+        <td>{{ animal.endDate }}</td>
+        <td>{{ animal.bassin.id }}</td>
+        <td>
+          <button type="button" class="btn btn-danger waves-effect" (click)="OnDelete(animal.id)" >
+            D
+          </button></td>
+        <td>
+          <button routerLink="/ModifyAnimal" type="button" class="btn btn-info waves-effect"  >
+            M
+          </button></td>
+      </tr>
+      </tbody>
+    </table>
+    <ul class="text-center list-inline py-3">
+      <li class="list-inline-item">
+        <a routerLink="/AddAnimal" class="btn btn-success waves-effect">Ajouter</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+

@@ -1,16 +1,20 @@
 package fr.Aquarium.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name="ESPECE")
 
-public class Espece {
+public class Espece implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="ESPECE_ID")
-    private int id;
+    private Long id;
+
+    @Column(name="ESPECE_NAME")
+    private String name;
 
     @Column(name="ESPECE_DATE")
     private Date esperanceDate;
@@ -25,18 +29,27 @@ public class Espece {
         super();
     }
 
-    public Espece(Date esperanceDate, String regime, int menacer) {
+    public Espece(String name, Date esperanceDate, String regime, int menacer) {
+        this.name = name;
         this.esperanceDate = esperanceDate;
         this.menacer = menacer;
         this.regime = regime;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getEsperanceDate() {

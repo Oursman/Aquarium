@@ -1,0 +1,48 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #especefrom="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="espece.name"
+               class="form-control"
+               id="name"
+               name="name"
+               placeholder="Enter your name"
+               required #name="ngModel">
+      </div>
+      <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
+      <div class="form-group">
+        <label for="regime">Regime</label>
+        <input type="text" [(ngModel)]="espece.regime"
+               class="form-control"
+               id="regime"
+               name="regime"
+               placeholder="Enter your regime "
+               required #regime="ngModel">
+        <div [hidden]="!regime.pristine" class="alert alert-danger">regime is required</div>
+      </div>
+      <div class="form-group">
+        <label for="menacer">Signe Menacer</label>
+        <input type="number" [(ngModel)]="espece.menacer"
+               class="form-control"
+               id="menacer"
+               name="menacer"
+               placeholder="Enter your signeDistinctif address"
+               required #menacer="ngModel">
+        <div [hidden]="!menacer.pristine" class="alert alert-danger">menacer is required</div>
+      </div>
+      <div class="form-group">
+        <label for="esperanceDate">Localisation</label>
+        <input type="Date" [(ngModel)]="espece.esperanceDate"
+               class="form-control"
+               id="esperanceDate"
+               name="esperanceDate"
+               placeholder="Enter your entrer de l'espece"
+               required #esperanceDate="ngModel">
+        <div [hidden]="!esperanceDate.pristine" class="alert alert-danger">Esperence de vie is required</div>
+      </div>
+      <button type="submit" [disabled]="!especefrom.form.valid"
+              class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>

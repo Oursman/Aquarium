@@ -1,0 +1,29 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <div class="card bg-success my-5">
+      <div class="card-body">
+        <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
+        <ul class="nav justify-content-center">
+          <li class="nav-item" style="padding-right: 2%;">
+            <a routerLink="/ViewsAnimal" class="btn btn-light" >Animal</a>
+          </li>
+          <li class="nav-item" style="padding-right: 2%;">
+            <a routerLink="/ViewsEspece" class="btn btn-light">Espece</a>
+          </li>
+          <li class="nav-item" style="padding-right: 2%;">
+            <a routerLink="/ViewsBassin" class="btn btn-light">Bassin</a>
+          </li>
+          <li class="nav-item" style="padding-right: 2%;">
+            <a routerLink="/ViewsSecteur" class="btn btn-light">Secteur</a>
+          </li>
+          <li class="nav-item" style="padding-right: 2%;">
+            <a routerLink="/ViewsAnimalByBassin" class="btn btn-light">Recherche Bassin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+</div>

@@ -1,16 +1,19 @@
 package fr.Aquarium.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="BASSIN")
-public class Bassin {
 
+public class Bassin implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="BASSIN_ID")
-    private int id;
+    private Long id;
 
     @Column(name="BASSIN_MAXCAPACITY")
     private int maxCapacity;
@@ -21,7 +24,8 @@ public class Bassin {
     @Column(name="BASSIN_SALE")
     private Boolean sale;
 
-    @ManyToOne(targetEntity = Secteur.class, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(targetEntity = Secteur.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "SECTEUR_ID", referencedColumnName = "SECTEUR_ID")
     private Secteur secteur;
 
@@ -36,11 +40,11 @@ public class Bassin {
         this.secteur = secteur;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

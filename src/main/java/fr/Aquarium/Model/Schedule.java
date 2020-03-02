@@ -1,15 +1,16 @@
 package fr.Aquarium.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name="SCHEDULE")
-public class Schedule {
+public class Schedule implements Serializable {
     @Id
     @GeneratedValue
     @Column(name="SCHEDULE_ID")
-    private int id;
+    private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BASSIN_ID", nullable = false)
@@ -38,11 +39,11 @@ public class Schedule {
         this.endActivity= endActivity;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

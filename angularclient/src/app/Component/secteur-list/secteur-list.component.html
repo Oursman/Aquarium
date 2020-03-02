@@ -1,0 +1,30 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Localisation</th>
+        <th scope="col">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let secteur of secteur">
+        <td>{{ secteur.id }}</td>
+        <td>{{ secteur.name }}</td>
+        <td>{{ secteur.localisation }}</td>
+        <td>
+          <button type="button" class="btn btn-danger waves-effect" (click)="OnDelete(secteur.id)" >
+            Delete
+          </button></td>
+      </tr>
+      </tbody>
+    </table>
+    <ul class="text-center list-inline py-3">
+      <li class="list-inline-item">
+        <a routerLink="/AddSecteur" class="btn btn-success waves-effect">Ajouter</a>
+      </li>
+    </ul>
+  </div>
+</div>

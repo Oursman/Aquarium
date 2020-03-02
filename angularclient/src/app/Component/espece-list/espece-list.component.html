@@ -1,0 +1,36 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Esperance de vie</th>
+        <th scope="col">Regime</th>
+        <th scope="col">Menace</th>
+        <th scope="col">Delete</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let espece of espece">
+        <td>{{ espece.id }}</td>
+        <td>{{ espece.name }}</td>
+        <td>{{ espece.esperanceDate }}</td>
+        <td>{{ espece.regime }}</td>
+        <td>{{ espece.menacer }}</td>
+        <td>
+          <button type="button" class="btn btn-danger waves-effect" (click)="OnDelete(espece.id)" >
+            Delete
+          </button></td>
+      </tr>
+      </tbody>
+    </table>
+    <ul class="text-center list-inline py-3">
+      <li class="list-inline-item">
+        <a routerLink="/AddEspece" class="btn btn-success waves-effect">Ajouter</a>
+      </li>
+    </ul>
+  </div>
+</div>

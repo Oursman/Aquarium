@@ -1,0 +1,62 @@
+<div class="card my-5">
+  <div class="card-body"><div class="form-group">
+    <label for="bassin">Bassin</label>
+    <select type="text" [(ngModel)]="idBassin"
+            class="form-control"
+            id="bassin"
+            name="bassin"
+            placeholder="Enter your Bassin de l'animal"
+            required #bassin="ngModel">
+      <option *ngFor="let bassin of bassins" [ngValue]="bassin.id">
+        {{bassin.id}}
+      </option>
+      <div [hidden]="!bassin.pristine" class="alert alert-danger">Bassin is required</div>
+    </select>
+    <ul class="text-center list-inline py-3">
+      <li class="list-inline-item">
+        <a class="btn btn-success waves-effect" (click)="onSubmit()">Rechercher</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</div>
+
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-responsive-md table-striped text-center btn-table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Sexe</th>
+        <th scope="col">Espece</th>
+        <th scope="col">Signe Distinctif</th>
+        <th scope="col">Entre</th>
+        <th scope="col">Sortie</th>
+        <th scope="col">Basssin</th>
+        <th scope="col">Delete</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let animal of animals">
+        <td>{{ animal.id }}</td>
+        <td>{{ animal.nom }}</td>
+        <td>{{ animal.sexe }}</td>
+        <td>{{ animal.espece.name }}</td>
+        <td>{{ animal.signeDistinctif }}</td>
+        <td>{{ animal.startDate }}</td>
+        <td>{{ animal.endDate }}</td>
+        <td>{{ animal.bassin.id }}</td>
+
+        <td>
+          <button type="button" class="btn btn-danger waves-effect" >
+            Delete
+          </button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
