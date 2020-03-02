@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../model/animal';
 import { AnimalServiceService } from '../../service/animal-service.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-animal-list',
@@ -11,7 +12,9 @@ export class AnimalListComponent implements OnInit {
 
   animal: Animal[];
 
-  constructor(private animalService: AnimalServiceService) {
+  constructor(
+    private router: Router,
+    private animalService: AnimalServiceService) {
   }
 
   ngOnInit() {
@@ -22,6 +25,9 @@ export class AnimalListComponent implements OnInit {
   OnDelete(id : number){
     this.animalService.delete(id).subscribe(result =>
       this.ngOnInit());
+  }
+  OnModify(animal : string){
+    this.router.navigate(['/UpdateAnimal',animal]);
   }
 
 

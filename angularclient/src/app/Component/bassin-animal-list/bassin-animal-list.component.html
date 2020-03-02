@@ -29,11 +29,11 @@
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Sexe</th>
-        <th scope="col">Espece</th>
+        <th scope="col">Espece Animal</th>
         <th scope="col">Signe Distinctif</th>
-        <th scope="col">Entre</th>
-        <th scope="col">Sortie</th>
-        <th scope="col">Basssin</th>
+        <th scope="col">Date d'Entre</th>
+        <th scope="col">Date de Sortie</th>
+        <th scope="col">Numero de Basssin</th>
         <th scope="col">Delete</th>
 
 
@@ -46,8 +46,8 @@
         <td>{{ animal.sexe }}</td>
         <td>{{ animal.espece.name }}</td>
         <td>{{ animal.signeDistinctif }}</td>
-        <td>{{ animal.startDate }}</td>
-        <td>{{ animal.endDate }}</td>
+        <td>{{ animal.startDate|date:'short' }}</td>
+        <td>{{ animal.endDate|date:'short' }}</td>
         <td>{{ animal.bassin.id }}</td>
 
         <td>

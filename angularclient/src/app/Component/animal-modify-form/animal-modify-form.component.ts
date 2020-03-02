@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Animal} from "../../model/animal";
 import {Espece} from "../../model/espece";
 import {Bassin} from "../../model/bassin";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {EspeceServiceService} from "../../service/espece-service.service";
 import {BassinServiceService} from "../../service/bassin-service.service";
 import {AnimalServiceService} from "../../service/animal-service.service";
@@ -17,6 +17,8 @@ export class AnimalModifyFormComponent implements OnInit {
   animal: Animal;
   especes: Espece[];
   bassins : Bassin[];
+  @Input('name')
+  myParam: string ="";
 
   ngOnInit() : void{
     this.especeServiceService.findAll()
@@ -26,10 +28,15 @@ export class AnimalModifyFormComponent implements OnInit {
     this.bassinServiceService.findAll()
       .subscribe(bassin => {
         this.bassins = bassin as Bassin[]
-      })
+      });
+
+    this.route.params.subscribe((params: Params) => this.myParam = params['animal']);
+    console.log(this.myParam)
+
   }
 
   constructor(
+
     private route: ActivatedRoute,
     private router: Router,
     private especeServiceService: EspeceServiceService,
@@ -46,6 +53,5 @@ export class AnimalModifyFormComponent implements OnInit {
   gotoUserList() {
     this.router.navigate(['/ViewsAnimal']);
   }
-
 
 }

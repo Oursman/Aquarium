@@ -9,6 +9,7 @@ import {EspeceFormComponent} from "./Component/espece-form/espece-form.component
 import {SecteurFormComponent} from "./Component/secteur-form/secteur-form.component";
 import {BassinFormComponent} from "./Component/bassin-form/bassin-form.component";
 import {BassinAnimalListComponent} from "./Component/bassin-animal-list/bassin-animal-list.component";
+import {AnimalModifyFormComponent} from "./Component/animal-modify-form/animal-modify-form.component";
 
 const routes: Routes = [
   { path: 'ViewsAnimal', component: AnimalListComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'AddAnimal', component: AnimalFormComponent },
   { path: 'AddEspece', component: EspeceFormComponent },
   { path: 'AddSecteur', component: SecteurFormComponent },
-  { path: 'AddBassin', component: BassinFormComponent }
+  { path: 'AddBassin', component: BassinFormComponent },
+  { path: 'UpdateAnimal/:animal', component: AnimalModifyFormComponent }
 
 ];
 

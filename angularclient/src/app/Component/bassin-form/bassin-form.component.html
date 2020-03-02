@@ -2,41 +2,43 @@
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #bassinfrom="ngForm">
       <div class="form-group">
-        <label for="maxCapacity">Capaciter max</label>
+        <label for="maxCapacity">Capaciter Maximal</label>
         <input type="number" [(ngModel)]="bassin.maxCapacity"
                class="form-control"
                id="maxCapacity"
                name="maxCapacity"
-               placeholder="Enter your Capacity max"
+               min="0"
+               placeholder="Enter une Capacity max"
                required #maxCapacity="ngModel">
       </div>
-      <div [hidden]="!maxCapacity.pristine" class="alert alert-danger">Capaciter max is required</div>
+      <div [hidden]="!maxCapacity.pristine" class="alert alert-danger">Capaciter Maximal est requis</div>
       <div class="form-group">
         <label for="volumeWater">Volume d'eau</label>
         <input type="Number" [(ngModel)]="bassin.volumeWater"
                class="form-control"
                id="volumeWater"
                name="volumeWater"
-               placeholder="Enter your Volume d'eau"
+               min="0"
+               placeholder="Enter un Volume d'eau"
                required #volumeWater="ngModel">
-        <div [hidden]="!volumeWater.pristine" class="alert alert-danger">Volume d'eau is required</div>
+        <div [hidden]="!volumeWater.pristine" class="alert alert-danger">Volume d'eau est requis</div>
       </div>
       <div class="form-group">
-        <label for="sale">Sale</label>
+        <label for="sale">Etat du Bassin</label>
         <select type="text" [(ngModel)]="bassin.sale"
                class="form-control"
                id="sale"
                name="sale"
-               placeholder="Enter your sale"
+               placeholder="Enter votre etat"
                required #sale="ngModel">
           <option  [ngValue]="true">
-            true
+            Propre
           </option>
           <option  [ngValue]="false">
-            false
+            Sale
           </option>
           </select>
-        <div [hidden]="!sale.pristine" class="alert alert-danger">sale is required</div>
+        <div [hidden]="!sale.pristine" class="alert alert-danger">Etat du Bassin requis</div>
       </div>
       <div class="form-group">
         <label for="secteur">Secteur</label>
@@ -44,12 +46,12 @@
                 class="form-control"
                 id="secteur"
                 name="secteur"
-                placeholder="Enter your secteur du bassin"
+                placeholder="Enter un secteur"
                 required #secteur="ngModel">
           <option *ngFor="let secteur of secteurs" [ngValue]="secteur">
             {{secteur.name}}
           </option>
-          <div [hidden]="!secteur.pristine" class="alert alert-danger">secteur is required</div>
+          <div [hidden]="!secteur.pristine" class="alert alert-danger">Le Secteur est requis</div>
         </select>
       </div>
       <button type="submit" [disabled]="!bassinfrom.form.valid"
