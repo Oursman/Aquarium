@@ -1,1 +1,31 @@
-get
+pipeline {
+    agent any
+    stages {
+        stage('Clean') {
+            steps {
+                bat 'mvn clean package'
+            }
+        }
+        stage('shutdown current app') {
+            steps{
+                script{
+                    try{
+                        bat "curl -X POST http://localhost:8080/actuator/shutdown"
+                    }catch(Exception e){
+                        //nothong
+                    }
+                }
+            }
+        }
+        stage('Build') {
+             steps {
+                bat "mvn compile"
+            }
+        }
+        stage('Test') {
+             steps {
+                bat "mvn test"
+             }
+        }
+    }
+}
